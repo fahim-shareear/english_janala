@@ -1,3 +1,11 @@
+const creaElements = (arr) =>{
+    const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
+    return(htmlElements.join(" "));
+}
+
+
+
+
 const loadLessons = () => {
     fetch("https://openapi.programming-hero.com/api/levels/all")
     .then(res => res.json())
@@ -51,12 +59,7 @@ const displayWordDetails = (word) =>{
                 <p>${word.sentence}</p>
             </div>
 
-            <div class="">
-                <h2 class="font-bold">Synonyms</h2>
-                <span class="btn">Syn1</span>
-                <span class="btn">Syn2</span>
-                <span class="btn">Syn3</span>
-            </div>
+            <div class="">${creaElements(word.synonyms)}</div>
     
     `;
     document.getElementById('word_modal').showModal();
